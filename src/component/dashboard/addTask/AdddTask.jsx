@@ -39,32 +39,32 @@ const {globalState}=useContext(contextApi)
 
     console.log(formData);
     
-// (async()=>{
-// let data=await services.addUser(formData,globalState.token)
-// try {
-//   if(data.status==201){
-//   toast.success("Registerd successfully")
-//   navigate("/home")
-// }else if(data.status==403){
-// toast.error(data.response.data.message)
-// }else{
-//   toast.error("Something went wrong")
-// }
-// } catch (error) {
-//   toast.error("Something went wrong")
-// }
-// })()
+(async()=>{
+let data=await services.addTask(formData,globalState.token)
+try {
+  if(data.status==201){
+  toast.success("Task Added successfully")
+  navigate("/home")
+}else if(data.status==403){
+toast.error(data.response.data.message)
+}else{
+  toast.error("Something went wrong")
+}
+} catch (error) {
+  toast.error("Something went wrong")
+}
+})()
    
   }
 
   return (
     <div className='bg-[#efefef] size-full flex justify-center items-center'>
-            <form action="" className='w-1/2 h-[75%]  rounded-3xl bg-white shadow-2xl flex  items-center flex-col gap-8 px-[80px] mt-[-20px] py-20 max-md:w-[90%] overflow-scroll' onSubmit={handelSubmit}>
+            <form action="" className='w-1/2 h-[75%]  rounded-3xl bg-white shadow-2xl flex  items-center flex-col gap-8 px-[80px] mt-[-20px] py-20 max-lg:w-[90%] overflow-scroll' onSubmit={handelSubmit}>
               <div className='font-bold w-full flex justify-center items-center'>
                 <h1 className='text-3xl max-lg:text-sm'>Add Task</h1>
               </div>
       
-              <div className='border-2  w-full flex justify-center items-center px-3 rounded-sm'>
+              <div className='border-2  w-full flex justify-center items-center px-3 pr-8 rounded-sm'>
                 <input type="text" name="title" placeholder='Enter Title' className='w-full outline-none px-4 h-10'  onChange={handelChange}/>
                 <span><CgNametag /></span>
               </div>
@@ -72,7 +72,7 @@ const {globalState}=useContext(contextApi)
        
       
       
-              <div className='border-2  w-full flex justify-center items-center px-3 rounded-sm'>
+              <div className='border-2  w-full flex justify-center items-center px-3 pr-8 rounded-sm'>
                 <input type="text" name="category" placeholder='Enter Category' className='w-full outline-none px-4 h-10' onChange={handelChange}/>
                   <span><MdAlternateEmail /></span>
               </div>
@@ -87,10 +87,10 @@ const {globalState}=useContext(contextApi)
       
               <div className='  w-full flex justify-evenly items-center px-3 rounded-sm'>
                 <div className='justify-self-start w-1/3'>Priority - </div>
-                <div className='grow flex justify-start' onChange={handelChange}>
-                <div className='w-1/3'><input type="radio" name='priority' value="low"/> <span>Low</span></div>
-               <div className='w-1/3'> <input type="radio" name='priority' value="medium"/> <span>Medium</span></div>
-               <div className='w-1/3'> <input type="radio" name='priority' value="high"/> <span>High</span></div>
+                <div className='grow flex justify-start max-lg:flex-col' onChange={handelChange}>
+                <div className='grow'><input type="radio" name='priority' value="low"/> <span>Low</span></div>
+               <div className='grow'> <input type="radio" name='priority' value="medium"/> <span>Medium</span></div>
+               <div className='grow'> <input type="radio" name='priority' value="high"/> <span>High</span></div>
                 </div>
               </div>
 
@@ -98,10 +98,10 @@ const {globalState}=useContext(contextApi)
       
               <div className='  w-full flex justify-evenly items-center px-3 rounded-sm'>
                 <div className='justify-self-start w-1/3'>Status - </div>
-                <div className='grow flex justify-start' onChange={handelChange}>
-               <div className='w-1/3'><input type="radio" name='status' value="pending"/> <span>Pending</span></div>
-               <div className='w-1/3'> <input type="radio" name='status' value="in-progress"/> <span>In-Progress</span></div>
-               <div className='w-1/3'> <input type="radio" name='status' value="completed"/> <span>Completed</span></div>
+                <div className='grow flex justify-start max-lg:flex-col' onChange={handelChange}>
+               <div className='grow'><input type="radio" name='status' value="pending"/> <span>Pending</span></div>
+               <div className='grow'> <input type="radio" name='status' value="in-progress"/> <span>In-Progress</span></div>
+               <div className='grow'> <input type="radio" name='status' value="completed"/> <span>Completed</span></div>
                 </div>
               </div>
               

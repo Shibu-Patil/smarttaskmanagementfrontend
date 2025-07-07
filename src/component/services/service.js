@@ -48,7 +48,37 @@ try {
             console.log(error);
             return error
         }
-    }
+    },
+
+        addTask:async(payload,token)=>{
+        try {
+        let data=await axiosInstance.post("/tasks",payload,{
+            headers:{
+                 "Authorization": `Bearer ${token}`
+            }
+        })
+    //   console.log(data);
+    return data
+        } catch (error) {
+            console.log(error);
+            return error
+        }
+    },
+
+        taskByUser:async(token)=>{
+try {
+        let data=await axiosInstance.get("/tasks",{
+            headers:{
+                 "Authorization": `Bearer ${token}`
+            }
+        })
+    //   console.log(data);
+    return data
+        } catch (error) {
+            console.log(error);
+            return error
+        }
+    },
 }
 
 
