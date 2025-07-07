@@ -2,10 +2,33 @@ import React, { useContext, useEffect, useState } from 'react'
 import { contextApi } from '../../context/Context'
 import services from '../../services/service'
 import toast from 'react-hot-toast'
+import { useNavigate } from 'react-router-dom'
 
 const CreatedTasksByUser = () => {
   const [createdTask,setCreatedTask]=useState([])
   const {globalState}=useContext(contextApi)
+  const navigate=useNavigate()
+  const handelUpdateClick=(val)=>{
+    navigate("/home/updateTask",{state:val})
+  }
+  const handelDeleteClick=(id)=>{
+      (async()=>{
+     try {
+       let data=await services.deleteTask(globalState.token,id)
+      console.log(data)
+      if(data.status==200){
+      setCreatedTask((preval)=>preval.filter((val)=>val._id!=data.data.task._id)) 
+        // console.log(users);
+      }else{  
+        toast.error("Something went Wrong")
+      }
+      
+     } catch (error) {
+        toast.error("Something went Wrong")
+      
+     }
+    })();  
+  }
   useEffect(()=>{
     (async()=>{
      try {
@@ -80,6 +103,10 @@ const CreatedTasksByUser = () => {
                     {task.status}
                   </span>
                 </p>
+             <div className='w-full h-8 flex gap-3'>
+                 <button className='grow bg-amber-600 rounded-xl' onClick={()=>{handelUpdateClick(task)}}>Update</button>
+                <button className='grow bg-red-600 rounded-xl' onClick={()=>{handelDeleteClick(task._id)}}>Delete</button>
+             </div>
               </div>
             );
           })}

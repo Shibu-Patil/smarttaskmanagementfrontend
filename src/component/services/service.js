@@ -79,6 +79,75 @@ try {
             return error
         }
     },
+            allTask:async(token)=>{
+try {
+        let data=await axiosInstance.get("/admin/tasks",{
+            headers:{
+                 "Authorization": `Bearer ${token}`
+            }
+        })
+    //   console.log(data);
+    return data
+        } catch (error) {
+            console.log(error);
+            return error
+        }
+    },updateTask:async(payload,token,id)=>{
+        try {
+        let data=await axiosInstance.patch(`/tasks/${id}`,payload,{
+            headers:{
+                 "Authorization": `Bearer ${token}`
+            }
+        })
+    //   console.log(data);
+    return data
+        } catch (error) {
+            console.log(error);
+            return error
+        }
+    },
+    deleteTask:async(token,id)=>{
+        try {
+        let data=await axiosInstance.delete(`/tasks/${id}`,{
+            headers:{
+                 "Authorization": `Bearer ${token}`
+            }
+        })
+    //   console.log(data);
+    return data
+        } catch (error) {
+            console.log(error);
+            return error
+        }
+    }, deActivateUser:async(token,id)=>{
+        console.log(token,id);
+        
+        try {
+        let data=await axiosInstance.patch(`/admin/deactivate-user/${id}`,{},{
+            headers:{
+                 "Authorization": `Bearer ${token}`
+            }
+        })
+    //   console.log(data);
+    return data
+        } catch (error) {
+            console.log(error);
+            return error
+        }
+    },reActivateUser:async(token,id)=>{
+        try {
+        let data=await axiosInstance.patch(`/admin/activate-user/${id}`,{},{
+            headers:{
+                 "Authorization": `Bearer ${token}`
+            }
+        })
+    //   console.log(data);
+    return data
+        } catch (error) {
+            console.log(error);
+            return error
+        }
+    },
 }
 
 

@@ -8,6 +8,7 @@ import AllUser from "../dashboard/allUser/AllUser";
 import AllTask from "../dashboard/allTask/AllTask";
 import AdddTask from "../dashboard/addTask/AdddTask";
 import CreatedTasksByUser from "../dashboard/createdTaskByUser/CreatedTasksByUser";
+import UpdateTask from "../dashboard/updateTask/UpdateTask";
 
 const routes=createBrowserRouter([
     {
@@ -39,6 +40,9 @@ const routes=createBrowserRouter([
             },{
                 path:"userTask",
                 element:<CreatedTasksByUser></CreatedTasksByUser>
+            },{
+                path:"updateTask",
+                element:<UpdateTask></UpdateTask>
             }
         ]
     }
