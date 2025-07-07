@@ -6,6 +6,8 @@ import Home from "../dashboard/home/Home";
 import AddUser from "../dashboard/addUser/AddUser";
 import AllUser from "../dashboard/allUser/AllUser";
 import AllTask from "../dashboard/allTask/AllTask";
+import AdddTask from "../dashboard/addTask/AdddTask";
+import CreatedTasksByUser from "../dashboard/createdTaskByUser/CreatedTasksByUser";
 
 const routes=createBrowserRouter([
     {
@@ -31,6 +33,12 @@ const routes=createBrowserRouter([
             },{
                 path:"allTask",
                 element:<AllTask></AllTask>
+            },{
+                path:"addTask",
+                element:<AdddTask></AdddTask>
+            },{
+                path:"userTask",
+                element:<CreatedTasksByUser></CreatedTasksByUser>
             }
         ]
     }

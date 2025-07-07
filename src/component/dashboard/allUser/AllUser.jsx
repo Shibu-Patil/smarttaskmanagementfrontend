@@ -37,7 +37,7 @@ const AllUser = () => {
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {users.map((val) => (
-            <div key={val._id} className="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-all">
+            <div key={val._id} className="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-all flex flex-col gap-2 ">
               <h3 className="text-xl font-semibold mb-2">{val.name}</h3>
               <p className="text-sm text-gray-700 mb-1">
                 <strong>Email:</strong> {val.email}
@@ -50,7 +50,13 @@ const AllUser = () => {
                 <span className={val.isActive ? "text-green-600 font-medium" : "text-red-600 font-medium"}>
                   {val.isActive ? "Active" : "Inactive"}
                 </span>
+
               </p>
+                   <div className={`w-full h-6 rounded-sm ${val.isActive? "bg-red-600":"bg-green-600"}`}>
+                  {
+                    val.isActive?<button className='size-full'>Deactivate</button>:<button className='size-full'>Reactivate</button>
+                  }
+                </div>
             </div>
           ))}
         </div>

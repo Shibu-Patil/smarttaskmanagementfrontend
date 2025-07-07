@@ -1,11 +1,13 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { TfiMenuAlt } from "react-icons/tfi";
 import { FaRegWindowClose } from "react-icons/fa";
+import { contextApi } from '../context/Context';
 
 const NavBar = () => {
     const [show,setShow]=useState(false)
 
+    const {globalState}=useContext(contextApi)
     const handelShow=()=>{
         setShow(!show)
     }
@@ -22,15 +24,37 @@ const NavBar = () => {
         <div className={`max-sm:hidden${show?'block':""}`}>
             <NavLink to="/home" className={({isActive})=>isActive?"bg-amber-50 text-black p-2 rounded-sm":""} end>Home</NavLink>
         </div>
+
+
+{
+    globalState.LoggedUserRole=="admin"?
+    
         <div className={`max-sm:hidden${show?'block':""}`}>
             <NavLink  to="addUser" className={({isActive})=>isActive?"bg-amber-50 text-black p-2 rounded-sm":""}>Add User</NavLink>
         </div>
-        <div className={`max-sm:hidden${show?'block':""}`}>
+        :
+         <div className={`max-sm:hidden${show?'block':""}`}>
+            <NavLink  to="addTask" className={({isActive})=>isActive?"bg-amber-50 text-black p-2 rounded-sm":""}>Add Task</NavLink>
+        </div>
+}
+
+
+        {
+            globalState.LoggedUserRole=="admin"?
+                  <div className={`max-sm:hidden${show?'block':""}`}>
             <NavLink to="allTask" className={({isActive})=>isActive?"bg-amber-50 text-black p-2 rounded-sm":""}>All Task </NavLink>
         </div>
-        <div className={`max-sm:hidden${show?'block':""}`}>
-            <NavLink  to="allUser" className={({isActive})=>isActive?"bg-amber-50 text-black p-2 rounded-sm":""}>All Users</NavLink>
+        :
+              <div className={`max-sm:hidden${show?'block':""}`}>
+            <NavLink to="userTask" className={({isActive})=>isActive?"bg-amber-50 text-black p-2 rounded-sm":""}>Task </NavLink>
         </div>
+        }
+
+        {
+            globalState.LoggedUserRole=="admin" ?     <div className={`max-sm:hidden${show?'block':""}`}>
+            <NavLink  to="allUser" className={({isActive})=>isActive?"bg-amber-50 text-black p-2 rounded-sm":""}>All Users</NavLink>
+        </div>:""
+        }
 
   
     </div>
