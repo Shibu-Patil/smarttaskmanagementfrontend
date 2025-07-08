@@ -21,10 +21,15 @@ const NavBar = () => {
            
         </div>
 
+        {/* <div className={`max-sm:hidden${show?'block':""}`}>
+            <NavLink to="/home" className={({isActive})=>isActive?"bg-amber-50 text-black p-2 rounded-sm":""} end>Home</NavLink>
+        </div> */}
+{
+     globalState.LoggedUserRole=="admin"?
         <div className={`max-sm:hidden${show?'block':""}`}>
             <NavLink to="/home" className={({isActive})=>isActive?"bg-amber-50 text-black p-2 rounded-sm":""} end>Home</NavLink>
-        </div>
-
+        </div>:""
+}
 
 {
     globalState.LoggedUserRole=="admin"?
