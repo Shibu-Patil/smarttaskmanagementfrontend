@@ -147,6 +147,19 @@ try {
             console.log(error);
             return error
         }
+    },  generateRepo:async(token)=>{
+try {
+        let data=await axiosInstance.get("/admin/report",{
+            headers:{
+                 "Authorization": `Bearer ${token}`
+            }
+        })
+    //   console.log(data);
+    return data
+        } catch (error) {
+            console.log(error);
+            return error
+        }
     },
 }
 
