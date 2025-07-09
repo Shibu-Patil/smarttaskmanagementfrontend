@@ -161,6 +161,21 @@ try {
             return error
         }
     },
+ generateAiRepo:async(token)=>{
+try {
+        let data=await axiosInstance.get("/admin/smart-report",{
+            headers:{
+                 "Authorization": `Bearer ${token}`
+            }
+        })
+    //   console.log(data);
+    return data
+        } catch (error) {
+            console.log(error);
+            return error
+        }
+    },
+    
 }
 
 
