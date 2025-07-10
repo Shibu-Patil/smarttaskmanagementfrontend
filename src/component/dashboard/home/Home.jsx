@@ -6,6 +6,7 @@ import services from '../../services/service';
 import { contextApi } from '../../context/Context';
 import { useNavigate } from 'react-router-dom';
 import AiAnalysisCard from '../aiAnalysisCard/AiAnalysisCard ';
+import { CSVLink } from 'react-csv';
 
 
 const Home = () => {
@@ -35,6 +36,7 @@ const Home = () => {
     })();
   }, []);
 
+console.log(stats);
 
   const handleButtonClick = async () => {
     setShowLoad(true);
@@ -62,6 +64,21 @@ const Home = () => {
           <span className="w-5 h-5 z-20 relative inline-block left-7 top-1 rounded-full border-t-4 border-t-blue-400 border-4 border-transparent animate-spin"></span>
         )}
       </button>
+
+            {stats && (
+        <CSVLink
+          data={[stats]}
+          filename="task-stats.csv"
+          className="relative w-[300px] h-[40px] rounded-xl overflow-hidden bg-transparent group text-center flex items-center justify-center"
+        >
+          <span className="absolute inset-0 z-0 pointer-events-none">
+            <span className="absolute inset-[-4px] rounded-[20px] bg-[conic-gradient(from_0deg,_red,_orange,_yellow,_lime,_cyan,_blue,_magenta,_red)] group-hover:[animation:spin_2s_linear_infinite]"></span>
+            <span className="absolute inset-[2px] rounded-[16px] bg-[#1f2937] z-10"></span>
+          </span>
+          <span className="relative z-20 text-white font-semibold">Download Excel</span>
+        </CSVLink>
+      )}
+
 
       <AiAnalysisCard report={aiReport} />
     </div>
