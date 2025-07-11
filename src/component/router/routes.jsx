@@ -9,6 +9,7 @@ import AllTask from "../dashboard/allTask/AllTask";
 import AdddTask from "../dashboard/addTask/AdddTask";
 import CreatedTasksByUser from "../dashboard/createdTaskByUser/CreatedTasksByUser";
 import UpdateTask from "../dashboard/updateTask/UpdateTask";
+import PrivateRoute from "../helper/PrivateRoute";
 
 const routes=createBrowserRouter([
     {
@@ -20,7 +21,7 @@ const routes=createBrowserRouter([
         element:<Login></Login>
     },{
         path:"/home",
-        element:<DashBoard></DashBoard>,
+        element:<PrivateRoute><DashBoard></DashBoard></PrivateRoute>,
         children:[
             {
                 index:true,
